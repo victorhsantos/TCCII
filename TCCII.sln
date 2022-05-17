@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TCCII.Authentication.API", "TCCII.Authentication.API", "{9747B0D6-A91E-4AAA-8749-E69772598D4F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TCCII.Core", "TCCII.Core", "{62DAF747-05BF-46A2-A0CA-852F60BA4BFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TCCII.Infrastructure", "TCCII.Infrastructure", "{E72DB80B-D436-4CEB-A0EB-98C228535456}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCCII.API.Authentication.API", "TCCII.API.Authentication\TCCII.API.Authentication.API.csproj", "{8362B381-D215-47BF-8349-3C50EE591A27}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCCII.Infrastructure", "TCCII.Infrastructure\TCCII.Infrastructure.csproj", "{D8EC0D1C-0E80-44E1-B8A7-07C47110C7F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCCII.Core", "TCCII.Core\TCCII.Core.csproj", "{D2EDB159-E824-4D88-89A4-3131652DEB92}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TCCII", "TCCII", "{AED160A7-0376-41FC-84CF-9B1F75B62772}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TCCII.Infrastructure.ChargeDatabase", "TCCII.Infrastructure.ChargeDatabase\TCCII.Infrastructure.ChargeDatabase.csproj", "{E4F09847-FCA7-4E0D-BE15-315390441D9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8362B381-D215-47BF-8349-3C50EE591A27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8362B381-D215-47BF-8349-3C50EE591A27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8362B381-D215-47BF-8349-3C50EE591A27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8362B381-D215-47BF-8349-3C50EE591A27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8EC0D1C-0E80-44E1-B8A7-07C47110C7F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8EC0D1C-0E80-44E1-B8A7-07C47110C7F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8EC0D1C-0E80-44E1-B8A7-07C47110C7F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8EC0D1C-0E80-44E1-B8A7-07C47110C7F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2EDB159-E824-4D88-89A4-3131652DEB92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2EDB159-E824-4D88-89A4-3131652DEB92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2EDB159-E824-4D88-89A4-3131652DEB92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2EDB159-E824-4D88-89A4-3131652DEB92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4F09847-FCA7-4E0D-BE15-315390441D9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4F09847-FCA7-4E0D-BE15-315390441D9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4F09847-FCA7-4E0D-BE15-315390441D9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4F09847-FCA7-4E0D-BE15-315390441D9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9747B0D6-A91E-4AAA-8749-E69772598D4F} = {AED160A7-0376-41FC-84CF-9B1F75B62772}
+		{62DAF747-05BF-46A2-A0CA-852F60BA4BFF} = {AED160A7-0376-41FC-84CF-9B1F75B62772}
+		{E72DB80B-D436-4CEB-A0EB-98C228535456} = {AED160A7-0376-41FC-84CF-9B1F75B62772}
+		{8362B381-D215-47BF-8349-3C50EE591A27} = {9747B0D6-A91E-4AAA-8749-E69772598D4F}
+		{D8EC0D1C-0E80-44E1-B8A7-07C47110C7F4} = {E72DB80B-D436-4CEB-A0EB-98C228535456}
+		{D2EDB159-E824-4D88-89A4-3131652DEB92} = {62DAF747-05BF-46A2-A0CA-852F60BA4BFF}
+		{E4F09847-FCA7-4E0D-BE15-315390441D9E} = {E72DB80B-D436-4CEB-A0EB-98C228535456}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2F483023-6866-47C4-89FD-A2AFBF672C0A}
+	EndGlobalSection
+EndGlobal
