@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TCCII.Deputados.Infrastructure.Data;
 
-namespace Acelero.GestaoAcesso.API.Services
+namespace TCCII.Deputados.API.Configurations
 {
     public static class DBManagementConfiguration
     {
@@ -8,7 +9,7 @@ namespace Acelero.GestaoAcesso.API.Services
         {
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
-                var serviceDB = serviceScope.ServiceProvider.GetService<DbContext>();
+                var serviceDB = serviceScope.ServiceProvider.GetService<DeputadosDbContext>();
                 await serviceDB.Database.MigrateAsync();
             }
         }

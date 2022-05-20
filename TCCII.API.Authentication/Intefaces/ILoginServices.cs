@@ -1,8 +1,8 @@
-﻿using TCCII.API.Authentication.API.DTOs.RequestModels.Login;
-using TCCII.API.Authentication.API.DTOs.ResponseModels.Common;
-using TCCII.API.Authentication.API.DTOs.ResponseModels.Login;
+﻿using TCCII.Deputados.API.DTOs.RequestModels.Login;
+using TCCII.Deputados.API.DTOs.ResponseModels.Common;
+using TCCII.Deputados.API.DTOs.ResponseModels.Login;
 
-namespace TCCII.API.Authentication.API.Intefaces
+namespace TCCII.Deputados.API.Intefaces
 {
     public interface ILoginServices
     {

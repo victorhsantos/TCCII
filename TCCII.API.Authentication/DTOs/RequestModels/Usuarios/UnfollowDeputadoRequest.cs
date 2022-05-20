@@ -1,13 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace TCCII.Deputados.API.DTOs.RequestModels.Login
+namespace TCCII.Deputados.API.DTOs.RequestModels.Usuarios
 {
-    public class LoginRequest
+    public class UnfollowDeputadoRequest
     {
         [Required]
         public string UserName { get; set; }
 
         [Required]
-        public string Password { get; set; }
+        public int IdDeputado { get; set; }
     }
 }

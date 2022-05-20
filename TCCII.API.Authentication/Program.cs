@@ -1,4 +1,4 @@
-using Acelero.GestaoAcesso.API.Configurations;
+using TCCII.Deputados.API.Configurations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +20,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+await DBManagementConfiguration.MigrationInitialization(app);
 
 app.UseHttpsRedirection();
 

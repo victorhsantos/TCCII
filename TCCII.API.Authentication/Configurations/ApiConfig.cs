@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 
-namespace Acelero.GestaoAcesso.API.Configurations
+namespace TCCII.Deputados.API.Configurations
 {
     public static class ApiConfig
     {
@@ -45,8 +45,8 @@ namespace Acelero.GestaoAcesso.API.Configurations
             {
                 options.SwaggerDoc("v1", new OpenApiInfo
                 {
-                    Title = "Autenticacao",
-                    Description = "API de Autenticacao",
+                    Title = "Deputados",
+                    Description = "API de Deputados",
                     Version = "1.0"
                 });                
             });

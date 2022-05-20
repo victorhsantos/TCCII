@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using TCCII.Core.Entities.Identity;
-using TCCII.Infrastructure.Data;
+using TCCII.Deputados.Core.Entities.Identity;
+using TCCII.Deputados.Infrastructure.Data;
 
-namespace Acelero.GestaoAcesso.API.Configurations
+namespace TCCII.Deputados.API.Configurations
 {
     public static class DbConfiguration
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace TCCII.API.Authentication.API.Messages
+namespace TCCII.Deputados.API.Messagens
 {
     public enum MessageInstanceSuccess
     {
@@ -16,6 +16,11 @@ namespace TCCII.API.Authentication.API.Messages
         [Description("Usuário atualizado com sucesso!")]
         SuccessUpdatedUser = 1004,
 
+        [Description("Deputado seguido com sucesso!")]
+        SuccessFollowDeputado = 1005,
+
+        [Description("Deputado deixado de ser seguido com sucesso!")]
+        SuccessUnfollowDeputado = 1006,
     }
 
     public enum MessageInstanceFailed
@@ -39,7 +44,16 @@ namespace TCCII.API.Authentication.API.Messages
         FailedRegisterUser = 4006,
 
         [Description("Não foi possivel atualizar o usuário!")]
-        FailedUpdatedUser = 4007,                
+        FailedUpdatedUser = 4007,
+
+        [Description("Senha inválida!")]
+        InvalidPassword = 4008,
+
+        [Description("Deputado não encontrado!")]
+        DeputadoNotFound = 4009,
+
+        [Description("Falha ao seguir Deputado.")]
+        FailedFollowDeputado = 4010,
     }
 
 
@@ -56,7 +70,7 @@ namespace TCCII.API.Authentication.API.Messages
                     if (Attribute.GetCustomAttribute(fieldInfo, typeof(DescriptionAttribute)) is DescriptionAttribute descriptionAttribute)
                         return descriptionAttribute.Description;
             }
-            return String.Empty;
+            return string.Empty;
         }
     }
 }

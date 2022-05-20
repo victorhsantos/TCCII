@@ -1,4 +1,4 @@
-﻿namespace TCCII.API.Authentication.API.Models
+﻿namespace TCCII.Deputados.API.Models
 {
     public class UserModel
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TCCII.Core.Entities.Identity;
+using TCCII.Deputados.Core.Entities.Identity;
 
-namespace TCCII.Infrastructure.Data.Configurations.Identity
+namespace TCCII.Deputados.Infrastructure.Data.Configurations.Identity
 {
     public class RolesConfiguration : IEntityTypeConfiguration<Role>
     {
@@ -28,7 +28,7 @@ namespace TCCII.Infrastructure.Data.Configurations.Identity
                     Id = 99998,
                     Name = "AceleroID User",
                     NormalizedName = "ACELEROID USER"
-                });            
+                });
         }
     }
 }

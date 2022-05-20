@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using TCCII.API.Authentication.API.Messages;
+using TCCII.Deputados.API.Messagens;
 
-namespace TCCII.API.Authentication.API.DTOs.ResponseModels.Common
+namespace TCCII.Deputados.API.DTOs.ResponseModels.Common
 {
     public class ErrorResponse
     {
@@ -21,7 +21,7 @@ namespace TCCII.API.Authentication.API.DTOs.ResponseModels.Common
             {
                 Code = ex.HResult,
                 ErrorMsg = ex.Message,
-                InnerError = ErrorResponse.From(ex.InnerException)
+                InnerError = From(ex.InnerException)
             };
         }
 
@@ -57,6 +57,6 @@ namespace TCCII.API.Authentication.API.DTOs.ResponseModels.Common
                 Code = (int)instance,
                 ErrorMsg = instance.GetDescription()
             };
-        }        
+        }
     }
 }

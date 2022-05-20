@@ -1,11 +1,11 @@
-﻿using TCCII.API.Authentication.API.Intefaces;
-using TCCII.API.Authentication.API.Services;
-using TCCII.Core.Interfaces;
-using TCCII.Core.Interfaces.Repositories;
-using TCCII.Core.Services;
-using TCCII.Infrastructure.Repositories;
+﻿using TCCII.Deputados.API.Intefaces;
+using TCCII.Deputados.API.Services;
+using TCCII.Deputados.Core.Interfaces;
+using TCCII.Deputados.Core.Interfaces.Repositories;
+using TCCII.Deputados.Core.Services;
+using TCCII.Deputados.Infrastructure.Repositories;
 
-namespace Acelero.GestaoAcesso.API.Configurations
+namespace TCCII.Deputados.API.Configurations
 {
     public static class DependencyInjectionConfig
     {
@@ -16,7 +16,8 @@ namespace Acelero.GestaoAcesso.API.Configurations
             services.AddScoped<IContaServices, ContaServices>();
             services.AddScoped<ILoginServices, LoginServices>();
             services.AddScoped<IUserServices, UserServices>();
-            services.AddScoped<IDeputadosServices, DeputadosServices>();
+            services.AddScoped<IDeputadoServices, DeputadosServices>();
+            services.AddScoped<IUsuarioServices, UsuarioServices>();            
 
             #endregion
 

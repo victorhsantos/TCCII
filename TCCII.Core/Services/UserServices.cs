@@ -1,20 +1,28 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using TCCII.Core.Entities.Identity;
-using TCCII.Core.Interfaces;
+using TCCII.Deputados.Core.Entities;
+using TCCII.Deputados.Core.Entities.Identity;
+using TCCII.Deputados.Core.Interfaces;
+using TCCII.Deputados.Core.Interfaces.Repositories;
 
-namespace TCCII.Core.Services
+namespace TCCII.Deputados.Core.Services
 {
     public class UserServices : IUserServices
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly IUserDeputadosRepository _userDeputadosRepository;
+        private readonly IDeputadosRepository _deputadosRepository;
 
-        public UserServices(           
+        public UserServices(
             UserManager<User> userManager,
-            SignInManager<User> signInManager)
-        {           
+            SignInManager<User> signInManager,
+            IUserDeputadosRepository userDeputadosRepository,
+            IDeputadosRepository deputadosRepository)
+        {
             _userManager = userManager;
             _signInManager = signInManager;
+            _userDeputadosRepository = userDeputadosRepository;
+            _deputadosRepository = deputadosRepository;
         }
 
         public async Task<IdentityResult> CreateUser(User user, string password) =>
@@ -28,7 +36,7 @@ namespace TCCII.Core.Services
 
         public async Task<IdentityResult> AddToRole(User user, string role) =>
             await _userManager.AddToRoleAsync(user, role);
-        
+
         public async Task<User> GetUserByEmail(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
@@ -89,5 +97,13 @@ namespace TCCII.Core.Services
             return await _userManager.ResetPasswordAsync(user, token, newPassword);
         }
 
+        public List<Deputado> GetFollowDeputados(User user)
+        {
+            var userDeputados = _userDeputadosRepository.QueryableFor(x => x.UserId == user.Id).ToList();
+            var listDeputados = new List<Deputado>();
+            foreach (var deputado in userDeputados)
+                listDeputados.Add(_deputadosRepository.FindById(deputado.DeputadosId));
+            return listDeputados;
+        }
     }
 }

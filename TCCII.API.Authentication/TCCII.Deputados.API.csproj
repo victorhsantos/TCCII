@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TCCII.Infrastructure\TCCII.Infrastructure.csproj" />
+    <ProjectReference Include="..\TCCII.Infrastructure\TCCII.Deputados.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

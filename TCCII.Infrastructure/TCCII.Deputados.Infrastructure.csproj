@@ -20,7 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\TCCII.Core\TCCII.Core.csproj" />
+		<ProjectReference Include="..\TCCII.Core\TCCII.Deputados.Core.csproj" />
 	</ItemGroup>
 
 </Project>

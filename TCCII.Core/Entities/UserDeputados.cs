@@ -1,6 +1,6 @@
-﻿using TCCII.Core.Entities.Identity;
+﻿using TCCII.Deputados.Core.Entities.Identity;
 
-namespace TCCII.Core.Entities
+namespace TCCII.Deputados.Core.Entities
 {
     public class UserDeputados
     {
@@ -14,6 +14,6 @@ namespace TCCII.Core.Entities
         public int DeputadosId { get; set; }
 
         public virtual User User { get; set; }
-        public virtual Deputados Deputado { get; set; }
+        public virtual Deputado Deputado { get; set; }
     }
 }

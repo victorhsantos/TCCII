@@ -1,6 +1,6 @@
-﻿using TCCII.API.Authentication.API.Messages;
+﻿using TCCII.Deputados.API.Messagens;
 
-namespace TCCII.API.Authentication.API.DTOs.ResponseModels.Common
+namespace TCCII.Deputados.API.DTOs.ResponseModels.Common
 {
     public class MessageResponse
     {

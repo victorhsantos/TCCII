@@ -1,8 +1,8 @@
-﻿using TCCII.Core.Entities.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using TCCII.Deputados.Core.Entities.Identity;
 
-namespace TCCII.Infrastructure.Data.Configurations.Identity
+namespace TCCII.Deputados.Infrastructure.Data.Configurations.Identity
 {
     public class UserTokensConfiguration : IEntityTypeConfiguration<UserToken>
     {

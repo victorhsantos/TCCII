@@ -1,10 +1,10 @@
-﻿using TCCII.Infrastructure.Data.Configurations.Identity;
+﻿using TCCII.Deputados.Infrastructure.Data.Configurations.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using TCCII.Core.Entities.Identity;
-using TCCII.Infrastructure.Data.Configurations;
+using TCCII.Deputados.Infrastructure.Data.Configurations;
+using TCCII.Deputados.Core.Entities.Identity;
 
-namespace TCCII.Infrastructure.Data
+namespace TCCII.Deputados.Infrastructure.Data
 {
     public class DeputadosDbContext :
         IdentityDbContext<User, Role, int, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
@@ -24,9 +24,9 @@ namespace TCCII.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new UserLoginsConfiguration());
             modelBuilder.ApplyConfiguration(new UsersConfiguration());
             modelBuilder.ApplyConfiguration(new UserRolesConfiguration());
-            modelBuilder.ApplyConfiguration(new UserTokensConfiguration());            
+            modelBuilder.ApplyConfiguration(new UserTokensConfiguration());
             modelBuilder.ApplyConfiguration(new DeputadosConfiguration());
-            modelBuilder.ApplyConfiguration(new UserDeputadosConfiguration());                        
+            modelBuilder.ApplyConfiguration(new UserDeputadosConfiguration());
 
         }
     }

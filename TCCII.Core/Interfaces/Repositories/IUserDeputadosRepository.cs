@@ -1,7 +1,7 @@
-﻿using TCCII.Core.Entities;
-using TCCII.Core.Interfaces.Repositories.Base;
+﻿using TCCII.Deputados.Core.Entities;
+using TCCII.Deputados.Core.Interfaces.Repositories.Base;
 
-namespace TCCII.Core.Interfaces.Repositories
+namespace TCCII.Deputados.Core.Interfaces.Repositories
 {
     public interface IUserDeputadosRepository : IBaseRepository<UserDeputados>
     {

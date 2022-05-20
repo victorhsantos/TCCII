@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace TCCII.Core.Entities.Identity
+namespace TCCII.Deputados.Core.Entities.Identity
 {
     public class User : IdentityUser<int>
     {
@@ -13,7 +13,7 @@ namespace TCCII.Core.Entities.Identity
         public virtual ICollection<UserLogin> Logins { get; set; }
 
         public virtual ICollection<UserClaim> Claims { get; set; }
-        
+
         public virtual ICollection<UserDeputados> Deputados { get; set; }
     }
 }

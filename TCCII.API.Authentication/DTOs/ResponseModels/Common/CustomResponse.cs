@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 
-namespace TCCII.API.Authentication.API.DTOs.ResponseModels.Common
+namespace TCCII.Deputados.API.DTOs.ResponseModels.Common
 {
     public class CustomResponse<T>
     {
@@ -54,7 +54,7 @@ namespace TCCII.API.Authentication.API.DTOs.ResponseModels.Common
                 Message = HttpStatusCode.BadRequest.ToString(),
                 StatusCode = StatusCodes.Status400BadRequest
             };
-        }        
+        }
 
     }
 }

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TCCII.Core.Entities.Identity;
+using TCCII.Deputados.Core.Entities.Identity;
 
-namespace TCCII.Infrastructure.Data.Configurations.Identity
+namespace TCCII.Deputados.Infrastructure.Data.Configurations.Identity
 {
     public class UsersConfiguration : IEntityTypeConfiguration<User>
     {
@@ -14,7 +14,7 @@ namespace TCCII.Infrastructure.Data.Configurations.Identity
             builder
                 .Property(user => user.FullName)
                 .HasColumnType("varchar(90)");
-                
+
         }
     }
 }

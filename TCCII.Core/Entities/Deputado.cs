@@ -1,8 +1,8 @@
-﻿using TCCII.Core.Entities.Base;
+﻿using TCCII.Deputados.Core.Entities.Base;
 
-namespace TCCII.Core.Entities
+namespace TCCII.Deputados.Core.Entities
 {
-    public class Deputados : BaseEntity
+    public class Deputado : BaseEntity
     {
         public int IdDeputado { get; set; }
         public string Email { get; set; }

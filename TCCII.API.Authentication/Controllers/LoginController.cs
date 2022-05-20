@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using TCCII.API.Authentication.API.DTOs.RequestModels.Login;
-using TCCII.API.Authentication.API.DTOs.ResponseModels.Common;
-using TCCII.API.Authentication.API.DTOs.ResponseModels.Login;
-using TCCII.API.Authentication.API.Intefaces;
+using TCCII.Deputados.API.DTOs.RequestModels.Login;
+using TCCII.Deputados.API.DTOs.ResponseModels.Common;
+using TCCII.Deputados.API.DTOs.ResponseModels.Login;
+using TCCII.Deputados.API.Intefaces;
 
-namespace TCCII.API.Authentication.API.Controllers
+namespace TCCII.Deputados.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

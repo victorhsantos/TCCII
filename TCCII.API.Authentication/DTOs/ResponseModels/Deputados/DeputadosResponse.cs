@@ -1,4 +1,4 @@
-﻿namespace TCCII.API.Authentication.API.DTOs.ResponseModels.Deputados
+﻿namespace TCCII.Deputados.API.DTOs.ResponseModels.Deputados
 {
     public class DeputadosResponse
     {

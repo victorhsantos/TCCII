@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TCCII.Core.Entities;
+using TCCII.Deputados.Core.Entities;
 
-namespace TCCII.Infrastructure.Data.Configurations
+namespace TCCII.Deputados.Infrastructure.Data.Configurations
 {
-    public class DeputadosConfiguration : IEntityTypeConfiguration<Deputados>
+    public class DeputadosConfiguration : IEntityTypeConfiguration<Deputado>
     {
-        public void Configure(EntityTypeBuilder<Deputados> builder)
+        public void Configure(EntityTypeBuilder<Deputado> builder)
         {
             builder
-              .ToTable(nameof(Deputados));
+              .ToTable(nameof(Deputado));
 
             builder.HasKey(x => x.Id);
 
@@ -20,7 +20,7 @@ namespace TCCII.Infrastructure.Data.Configurations
 
             builder
                 .Property(a => a.Email)
-                .HasColumnType("varchar(200)");                
+                .HasColumnType("varchar(200)");
 
             builder
                 .Property(a => a.IdLegislatura)
@@ -42,7 +42,7 @@ namespace TCCII.Infrastructure.Data.Configurations
             builder
                 .Property(a => a.Uri)
                 .HasColumnType("varchar(300)");
-            
+
             builder
                 .Property(a => a.UriPartido)
                 .HasColumnType("varchar(300)");

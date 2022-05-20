@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
 using System.Net;
-using TCCII.API.Authentication.API.DTOs.RequestModels.Account;
-using TCCII.API.Authentication.API.DTOs.ResponseModels.Account;
-using TCCII.API.Authentication.API.DTOs.ResponseModels.Common;
-using TCCII.API.Authentication.API.Intefaces;
-using TCCII.API.Authentication.API.Messages;
-using TCCII.API.Authentication.API.Models;
-using TCCII.Core.Entities.Identity;
-using TCCII.Core.Interfaces;
+using TCCII.Deputados.API.DTOs.RequestModels.Account;
+using TCCII.Deputados.API.DTOs.ResponseModels.Account;
+using TCCII.Deputados.API.DTOs.ResponseModels.Common;
+using TCCII.Deputados.API.Intefaces;
+using TCCII.Deputados.API.Messagens;
+using TCCII.Deputados.API.Models;
+using TCCII.Deputados.Core.Entities.Identity;
+using TCCII.Deputados.Core.Interfaces;
 
-namespace TCCII.API.Authentication.API.Services
+namespace TCCII.Deputados.API.Services
 {
     public class ContaServices : IContaServices
     {
@@ -42,6 +42,20 @@ namespace TCCII.API.Authentication.API.Services
             return CustomResponse<CreateUserResponse>.FromBadRequest(
                 ErrorResponse.From(result, MessageInstanceFailed.FailedRegisterUser));
 
+        }
+
+        public async Task<CustomResponse<MessageResponse>> ChangePassword(ChangePasswordRequest request)
+        {
+            var user = await _userServices.GetUserByUserName(request.UserName);
+            if (user == null) return CustomResponse<MessageResponse>.FromBadRequest(ErrorResponse.BadRequest(MessageInstanceFailed.UserNotFound));
+
+            var passwordIsValid = await _userServices.CheckPasswordUser(user, request.Password);
+            if (!passwordIsValid) return CustomResponse<MessageResponse>.FromBadRequest(ErrorResponse.BadRequest(MessageInstanceFailed.InvalidPassword));
+
+            var result = await _userServices.ChangePassword(user, request.Password, request.NewPassword);
+            if (!result.Succeeded) return CustomResponse<MessageResponse>.FromBadRequest(ErrorResponse.BadRequest(MessageInstanceFailed.FailedChangePassword));
+
+            return CustomResponse<MessageResponse>.FromSuccess(MessageResponse.Success(MessageInstanceSuccess.SuccessChangePassword));
         }
     }
 }

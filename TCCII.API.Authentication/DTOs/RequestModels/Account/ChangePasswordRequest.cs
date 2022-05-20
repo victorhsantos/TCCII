@@ -2,16 +2,10 @@
 
 namespace TCCII.Deputados.API.DTOs.RequestModels.Account
 {
-    public class CreateUserRequest
+    public class ChangePasswordRequest
     {
         [Required]
-        public string Username { get; set; }
-
-        [Required]
-        public string Email { get; set; }
-
-        [Required]
-        public string FullName { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -19,7 +13,8 @@ namespace TCCII.Deputados.API.DTOs.RequestModels.Account
 
         [Required]
         [DataType(DataType.Password)]
-        [Compare("Password")]
-        public string RePassword { get; set; }
+        public string NewPassword { get; set; }
+
+
     }
 }

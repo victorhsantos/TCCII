@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace TCCII.Core.Entities.Identity
+namespace TCCII.Deputados.Core.Entities.Identity
 {
     public class UserRole : IdentityUserRole<int>
     {

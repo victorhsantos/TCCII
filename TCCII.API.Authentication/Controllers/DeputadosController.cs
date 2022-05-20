@@ -1,20 +1,20 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
-using TCCII.API.Authentication.API.DTOs.RequestModels.Deputados;
-using TCCII.API.Authentication.API.DTOs.ResponseModels.Common;
-using TCCII.API.Authentication.API.DTOs.ResponseModels.Deputados;
-using TCCII.API.Authentication.API.Intefaces;
+using TCCII.Deputados.API.DTOs.RequestModels.Deputados;
+using TCCII.Deputados.API.DTOs.ResponseModels.Common;
+using TCCII.Deputados.API.DTOs.ResponseModels.Deputados;
+using TCCII.Deputados.API.Intefaces;
 
-namespace TCCII.API.Authentication.API.Controllers
+namespace TCCII.Deputados.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     [Produces("application/json")]
     public class DeputadosController : ControllerBase
     {
-        private readonly IDeputadosServices _deputadosServices;
+        private readonly IDeputadoServices _deputadosServices;
 
-        public DeputadosController(IDeputadosServices deputadosServices)
+        public DeputadosController(IDeputadoServices deputadosServices)
         {
             _deputadosServices = deputadosServices;
         }
@@ -33,13 +33,26 @@ namespace TCCII.API.Authentication.API.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet]        
+        [HttpGet]
         [SwaggerOperation(Summary = "Retorna todos os Deputados")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CustomResponse<List<DeputadosResponse>>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(CustomResponse<object>))]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _deputadosServices.GetAllDeputados();
+            if (result.Success) return Ok(result);
+            return BadRequest(result);
+        }
+
+        [HttpGet("{idDeputado}")]
+        [SwaggerOperation(Summary = "Retorna Deputado")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CustomResponse<DeputadosResponse>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(CustomResponse<object>))]
-        public async Task<IActionResult> Get()
-        {            
-            var result = await _deputadosServices.GetAllDeputados();
+        public async Task<IActionResult> GetDeputado(int idDeputado)
+        {
+            if (!ModelState.IsValid) return BadRequest(CustomResponse<ErrorResponse>.FromErrorModelState(ModelState));
+
+            var result = await _deputadosServices.GetDeputado(idDeputado);
             if (result.Success) return Ok(result);
             return BadRequest(result);
         }

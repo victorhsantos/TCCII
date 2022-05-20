@@ -1,4 +1,4 @@
-﻿namespace TCCII.API.Authentication.API.DTOs.ResponseModels.Account
+﻿namespace TCCII.Deputados.API.DTOs.ResponseModels.Account
 {
     public class CreateUserResponse
     {

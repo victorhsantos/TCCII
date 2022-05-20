@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TCCII.Core.Entities;
+using TCCII.Deputados.Core.Entities;
 
-namespace TCCII.Infrastructure.Data.Configurations
+namespace TCCII.Deputados.Infrastructure.Data.Configurations
 {
     public class UserDeputadosConfiguration : IEntityTypeConfiguration<UserDeputados>
     {

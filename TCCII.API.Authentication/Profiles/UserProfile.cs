@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
-using TCCII.API.Authentication.API.DTOs.RequestModels.Account;
-using TCCII.API.Authentication.API.Models;
-using TCCII.Core.Entities.Identity;
+using TCCII.Deputados.API.DTOs.RequestModels.Account;
+using TCCII.Deputados.API.Models;
+using TCCII.Deputados.Core.Entities.Identity;
 
-namespace TCCII.API.Authentication.API.Profiles
+namespace TCCII.Deputados.API.Profiles
 {
     public class UserProfile : Profile
     {
         public UserProfile()
         {
-            CreateMap<CreateUserRequest, UserModel>();                
-            CreateMap<UserModel, User>();            
+            CreateMap<CreateUserRequest, UserModel>();
+            CreateMap<UserModel, User>();
         }
     }
 }

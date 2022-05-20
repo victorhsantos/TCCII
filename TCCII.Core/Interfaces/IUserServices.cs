@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using TCCII.Core.Entities.Identity;
+using TCCII.Deputados.Core.Entities;
+using TCCII.Deputados.Core.Entities.Identity;
 
-namespace TCCII.Core.Interfaces
+namespace TCCII.Deputados.Core.Interfaces
 {
     public interface IUserServices
     {
@@ -11,11 +12,12 @@ namespace TCCII.Core.Interfaces
         Task<User> GetUserByEmail(string email);
         Task<User> GetUserById(int id);
         Task<User> GetUserByUserName(string userName);
-        Task<IdentityResult> ChangePassword(User user, string password, string newPassWord);
+        Task<IdentityResult> ChangePassword(User user, string password, string newPassword);
         Task<bool> CheckPasswordUser(User user, string password);
         Task<IdentityResult> UpdateUser(User user);
         Task<string> GenerateResetPasswordToken(User user);
         Task<bool> VerifyTokenForgetPassword(User user, string token);
         Task<IdentityResult> ResetPassword(User user, string token, string newPassword);
+        List<Deputado> GetFollowDeputados(User user);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace TCCII.API.Authentication.API.DTOs.RequestModels.Deputados
+﻿namespace TCCII.Deputados.API.DTOs.RequestModels.Deputados
 {
     public class CreateDeputadosRequest
     {

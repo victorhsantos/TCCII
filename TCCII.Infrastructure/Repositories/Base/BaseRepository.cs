@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using TCCII.Core.Entities.Base;
-using TCCII.Core.Interfaces.Repositories.Base;
-using TCCII.Infrastructure.Data;
+using TCCII.Deputados.Core.Entities.Base;
+using TCCII.Deputados.Core.Interfaces.Repositories.Base;
+using TCCII.Deputados.Infrastructure.Data;
 
-namespace TCCII.Infrastructure.Repositories.Base
+namespace TCCII.Deputados.Infrastructure.Repositories.Base
 {
     public class BaseRepository<TEntity> : IBaseRepository<TEntity>, IDisposable where TEntity : class
     {
@@ -26,7 +26,7 @@ namespace TCCII.Infrastructure.Repositories.Base
                 baseEntity.ExcludedAt = DateTime.Parse("9999-12-31");
             }
 
-            await DbSet.AddAsync(entity);            
+            await DbSet.AddAsync(entity);
             return entity;
         }
 

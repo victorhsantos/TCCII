@@ -1,9 +1,8 @@
-﻿using TCCII.Core.Entities.Identity;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using TCCII.Deputados.Core.Entities.Identity;
 
-
-namespace TCCII.Infrastructure.Data.Configurations.Identity
+namespace TCCII.Deputados.Infrastructure.Data.Configurations.Identity
 {
     public class UserRolesConfiguration : IEntityTypeConfiguration<UserRole>
     {
@@ -25,7 +24,7 @@ namespace TCCII.Infrastructure.Data.Configurations.Identity
                 .HasOne(userRole => userRole.User)
                 .WithMany(user => user.Roles)
                 .HasForeignKey(userRole => userRole.UserId)
-                .IsRequired(); 
+                .IsRequired();
 
         }
     }
