@@ -59,10 +59,7 @@ namespace TCCII.Deputados.API.Services
             var deputado = _uow.DeputadosRepository.QueryableFor(x => x.IdDeputado == idDeputado).FirstOrDefault();
             var result = _mapper.Map<DeputadosResponse>(deputado);
 
-            return CustomResponse<DeputadosResponse>.FromSuccess(
-                                result,
-                                HttpStatusCode.OK.ToString(),
-                                StatusCodes.Status200OK);
+            return CustomResponse<DeputadosResponse>.FromSuccess(result);
         }
     }
 }

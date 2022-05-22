@@ -21,11 +21,8 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 await DBManagementConfiguration.MigrationInitialization(app);
-
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
+app.UseCors("Development");
 app.MapControllers();
-
 app.Run();
