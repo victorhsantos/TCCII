@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TCCII.Deputados.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using TCCII.Deputados.Infrastructure.Data;
 namespace TCCII.Infrastructure.Migrations
 {
     [DbContext(typeof(DeputadosDbContext))]
-    partial class DeputadosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220521040651_UmParaMuitos")]
+    partial class UmParaMuitos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

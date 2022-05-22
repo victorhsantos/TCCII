@@ -19,8 +19,7 @@ namespace TCCII.Deputados.API.Controllers
             _deputadosServices = deputadosServices;
         }
 
-        [HttpPost]
-        [Route("create")]
+        [HttpPost]        
         [SwaggerOperation(Summary = "Cadastra Deputados")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CustomResponse<MessageResponse>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(CustomResponse<object>))]

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TCCII.Deputados.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using TCCII.Deputados.Infrastructure.Data;
 namespace TCCII.Infrastructure.Migrations
 {
     [DbContext(typeof(DeputadosDbContext))]
-    partial class DeputadosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220520213108_AddTabelaDespesas")]
+    partial class AddTabelaDespesas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,6 +36,7 @@ namespace TCCII.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("varchar(200)");
 
                     b.Property<DateTime>("ExcludedAt")
@@ -46,9 +49,11 @@ namespace TCCII.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("SiglaPartido")
+                        .IsRequired()
                         .HasColumnType("varchar(25)");
 
                     b.Property<string>("SiglaUf")
@@ -59,12 +64,15 @@ namespace TCCII.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Uri")
+                        .IsRequired()
                         .HasColumnType("varchar(300)");
 
                     b.Property<string>("UriPartido")
+                        .IsRequired()
                         .HasColumnType("varchar(300)");
 
                     b.Property<string>("UrlFoto")
+                        .IsRequired()
                         .HasColumnType("varchar(300)");
 
                     b.HasKey("Id");
@@ -86,9 +94,6 @@ namespace TCCII.Infrastructure.Migrations
                     b.Property<DateTime>("ExcludedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdDeputado")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
 
@@ -96,6 +101,7 @@ namespace TCCII.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("cnpjCpfFornecedor")
+                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<int>("codDocumento")
@@ -108,33 +114,37 @@ namespace TCCII.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("dataDocumento")
+                        .IsRequired()
                         .HasColumnType("varchar(20)");
 
                     b.Property<int>("mes")
                         .HasColumnType("int");
 
                     b.Property<string>("nomeFornecedor")
+                        .IsRequired()
                         .HasColumnType("varchar(200)");
 
-                    b.Property<int>("notificada")
-                        .HasColumnType("int");
-
                     b.Property<string>("numDocumento")
+                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<string>("numRessarcimento")
+                        .IsRequired()
                         .HasColumnType("varchar(50)");
 
                     b.Property<int>("parcela")
                         .HasColumnType("int");
 
                     b.Property<string>("tipoDespesa")
+                        .IsRequired()
                         .HasColumnType("varchar(200)");
 
                     b.Property<string>("tipoDocumento")
+                        .IsRequired()
                         .HasColumnType("varchar(200)");
 
                     b.Property<string>("urlDocumento")
+                        .IsRequired()
                         .HasColumnType("varchar(200)");
 
                     b.Property<decimal>("valorDocumento")

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TCCII.Deputados.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using TCCII.Deputados.Infrastructure.Data;
 namespace TCCII.Infrastructure.Migrations
 {
     [DbContext(typeof(DeputadosDbContext))]
-    partial class DeputadosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220520191511_AjusteCampoDeputado")]
+    partial class AjusteCampoDeputado
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,6 +36,7 @@ namespace TCCII.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("varchar(200)");
 
                     b.Property<DateTime>("ExcludedAt")
@@ -46,9 +49,11 @@ namespace TCCII.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Nome")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("SiglaPartido")
+                        .IsRequired()
                         .HasColumnType("varchar(25)");
 
                     b.Property<string>("SiglaUf")
@@ -59,96 +64,20 @@ namespace TCCII.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Uri")
+                        .IsRequired()
                         .HasColumnType("varchar(300)");
 
                     b.Property<string>("UriPartido")
+                        .IsRequired()
                         .HasColumnType("varchar(300)");
 
                     b.Property<string>("UrlFoto")
+                        .IsRequired()
                         .HasColumnType("varchar(300)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Deputado", (string)null);
-                });
-
-            modelBuilder.Entity("TCCII.Deputados.Core.Entities.Despesa", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("ExcludedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("IdDeputado")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ano")
-                        .HasColumnType("int");
-
-                    b.Property<string>("cnpjCpfFornecedor")
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<int>("codDocumento")
-                        .HasColumnType("int");
-
-                    b.Property<int>("codLote")
-                        .HasColumnType("int");
-
-                    b.Property<int>("codTipoDocumento")
-                        .HasColumnType("int");
-
-                    b.Property<string>("dataDocumento")
-                        .HasColumnType("varchar(20)");
-
-                    b.Property<int>("mes")
-                        .HasColumnType("int");
-
-                    b.Property<string>("nomeFornecedor")
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<int>("notificada")
-                        .HasColumnType("int");
-
-                    b.Property<string>("numDocumento")
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<string>("numRessarcimento")
-                        .HasColumnType("varchar(50)");
-
-                    b.Property<int>("parcela")
-                        .HasColumnType("int");
-
-                    b.Property<string>("tipoDespesa")
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<string>("tipoDocumento")
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<string>("urlDocumento")
-                        .HasColumnType("varchar(200)");
-
-                    b.Property<decimal>("valorDocumento")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("valorGlosa")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<decimal>("valorLiquido")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Despesa", (string)null);
                 });
 
             modelBuilder.Entity("TCCII.Deputados.Core.Entities.Identity.Role", b =>
@@ -179,6 +108,22 @@ namespace TCCII.Infrastructure.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("Role", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 99999,
+                            ConcurrencyStamp = "82498cde-2c4f-4080-89e0-82c1b857252b",
+                            Name = "AceleroID Administrator",
+                            NormalizedName = "ACELEROID ADMINISTRATOR"
+                        },
+                        new
+                        {
+                            Id = 99998,
+                            ConcurrencyStamp = "1bee093a-2834-415c-8ea3-fb3756ea696c",
+                            Name = "AceleroID User",
+                            NormalizedName = "ACELEROID USER"
+                        });
                 });
 
             modelBuilder.Entity("TCCII.Deputados.Core.Entities.Identity.RoleClaim", b =>

@@ -27,7 +27,7 @@ namespace TCCII.Deputados.Infrastructure.Data
             modelBuilder.ApplyConfiguration(new UserTokensConfiguration());
             modelBuilder.ApplyConfiguration(new DeputadosConfiguration());
             modelBuilder.ApplyConfiguration(new UserDeputadosConfiguration());
-
+            modelBuilder.ApplyConfiguration(new DespesasConfiguration());                       
         }
     }
 }

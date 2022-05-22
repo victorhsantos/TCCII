@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TCCII.Deputados.Infrastructure.Data;
 
@@ -11,9 +12,10 @@ using TCCII.Deputados.Infrastructure.Data;
 namespace TCCII.Infrastructure.Migrations
 {
     [DbContext(typeof(DeputadosDbContext))]
-    partial class DeputadosDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220521015830_IsRequiredFalse")]
+    partial class IsRequiredFalse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,6 +74,21 @@ namespace TCCII.Infrastructure.Migrations
                     b.ToTable("Deputado", (string)null);
                 });
 
+            modelBuilder.Entity("TCCII.Deputados.Core.Entities.DeputadoDespesas", b =>
+                {
+                    b.Property<int>("DeputadoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DespesasId")
+                        .HasColumnType("int");
+
+                    b.HasKey("DeputadoId", "DespesasId");
+
+                    b.HasIndex("DespesasId");
+
+                    b.ToTable("DeputadoDespesas", (string)null);
+                });
+
             modelBuilder.Entity("TCCII.Deputados.Core.Entities.Despesa", b =>
                 {
                     b.Property<int>("Id")
@@ -85,9 +102,6 @@ namespace TCCII.Infrastructure.Migrations
 
                     b.Property<DateTime>("ExcludedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("IdDeputado")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -371,6 +385,25 @@ namespace TCCII.Infrastructure.Migrations
                     b.ToTable("UserDeputados", (string)null);
                 });
 
+            modelBuilder.Entity("TCCII.Deputados.Core.Entities.DeputadoDespesas", b =>
+                {
+                    b.HasOne("TCCII.Deputados.Core.Entities.Deputado", "Deputado")
+                        .WithMany("Despesas")
+                        .HasForeignKey("DeputadoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TCCII.Deputados.Core.Entities.Despesa", "Despesas")
+                        .WithMany("Deputado")
+                        .HasForeignKey("DespesasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Deputado");
+
+                    b.Navigation("Despesas");
+                });
+
             modelBuilder.Entity("TCCII.Deputados.Core.Entities.Identity.RoleClaim", b =>
                 {
                     b.HasOne("TCCII.Deputados.Core.Entities.Identity.Role", "Role")
@@ -455,7 +488,14 @@ namespace TCCII.Infrastructure.Migrations
 
             modelBuilder.Entity("TCCII.Deputados.Core.Entities.Deputado", b =>
                 {
+                    b.Navigation("Despesas");
+
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("TCCII.Deputados.Core.Entities.Despesa", b =>
+                {
+                    b.Navigation("Deputado");
                 });
 
             modelBuilder.Entity("TCCII.Deputados.Core.Entities.Identity.Role", b =>

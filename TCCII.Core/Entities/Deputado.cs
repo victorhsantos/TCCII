@@ -14,6 +14,6 @@ namespace TCCII.Deputados.Core.Entities
         public string UriPartido { get; set; }
         public string UrlFoto { get; set; }
 
-        public virtual ICollection<UserDeputados> Users { get; set; }
+        public virtual ICollection<UserDeputados> Users { get; set; }        
     }
 }

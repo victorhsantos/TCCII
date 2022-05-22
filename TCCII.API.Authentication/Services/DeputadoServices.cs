@@ -6,19 +6,19 @@ using TCCII.Deputados.API.DTOs.ResponseModels.Deputados;
 using TCCII.Deputados.API.Intefaces;
 using TCCII.Deputados.API.Messagens;
 using TCCII.Deputados.Core.Entities;
-using TCCII.Deputados.Core.Interfaces.Repositories;
+using TCCII.Deputados.Core.Interfaces.Repositories.Base;
 
 namespace TCCII.Deputados.API.Services
 {
     public class DeputadosServices : IDeputadoServices
     {
         private readonly IMapper _mapper;
-        private readonly IDeputadosRepository _deputadosRepository;
+        private readonly IUnitOfWork _uow;
 
-        public DeputadosServices(IMapper mapper, IDeputadosRepository deputadosRepository)
+        public DeputadosServices(IMapper mapper, IUnitOfWork uow)
         {
-            _mapper = mapper;
-            _deputadosRepository = deputadosRepository;
+            _mapper = mapper;            
+            _uow = uow;
         }
 
         public async Task<CustomResponse<MessageResponse>> AddDeputados(List<CreateDeputadosRequest> request)
@@ -28,10 +28,10 @@ namespace TCCII.Deputados.API.Services
                 if (string.IsNullOrEmpty(requestItem.nome)) continue;
 
                 var deputado = _mapper.Map<Deputado>(requestItem);
-                await _deputadosRepository.Add(deputado);
+                await _uow.DeputadosRepository.Add(deputado);
             }
 
-            await _deputadosRepository.Save();
+            _uow.Commit();
 
             return CustomResponse<MessageResponse>.FromSuccess(
                                 MessageResponse.Success(MessageInstanceSuccess.SuccessCreateDeputados),
@@ -41,7 +41,7 @@ namespace TCCII.Deputados.API.Services
 
         public async Task<CustomResponse<List<DeputadosResponse>>> GetAllDeputados()
         {
-            var deputados = _deputadosRepository.QueryableFor(orderBy: x => x.OrderBy(a => a.Nome)).ToList();
+            var deputados = _uow.DeputadosRepository.QueryableFor(orderBy: x => x.OrderBy(a => a.Nome)).ToList();
 
             List<DeputadosResponse> result = new List<DeputadosResponse>();
 
@@ -56,7 +56,7 @@ namespace TCCII.Deputados.API.Services
 
         public async Task<CustomResponse<DeputadosResponse>> GetDeputado(int idDeputado)
         {
-            var deputado = _deputadosRepository.QueryableFor(x => x.IdDeputado == idDeputado).FirstOrDefault();
+            var deputado = _uow.DeputadosRepository.QueryableFor(x => x.IdDeputado == idDeputado).FirstOrDefault();
             var result = _mapper.Map<DeputadosResponse>(deputado);
 
             return CustomResponse<DeputadosResponse>.FromSuccess(

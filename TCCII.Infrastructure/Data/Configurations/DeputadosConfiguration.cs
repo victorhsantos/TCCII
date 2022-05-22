@@ -15,12 +15,12 @@ namespace TCCII.Deputados.Infrastructure.Data.Configurations
 
             builder
                 .Property(a => a.IdDeputado)
-                .HasColumnType("int")
-                .IsRequired();
+                .HasColumnType("int");
 
             builder
                 .Property(a => a.Email)
-                .HasColumnType("varchar(200)");
+                .HasColumnType("varchar(200)")
+                .IsRequired(false);
 
             builder
                 .Property(a => a.IdLegislatura)
@@ -29,11 +29,12 @@ namespace TCCII.Deputados.Infrastructure.Data.Configurations
             builder
                 .Property(a => a.Nome)
                 .HasColumnType("varchar(100)")
-                .IsRequired();
+                .IsRequired(false);
 
             builder
                 .Property(a => a.SiglaPartido)
-                .HasColumnType("varchar(25)");
+                .HasColumnType("varchar(25)")
+                .IsRequired(false);
 
             builder
                 .Property(a => a.SiglaUf)
@@ -41,15 +42,18 @@ namespace TCCII.Deputados.Infrastructure.Data.Configurations
 
             builder
                 .Property(a => a.Uri)
-                .HasColumnType("varchar(300)");
+                .HasColumnType("varchar(300)")
+                .IsRequired(false);
 
             builder
                 .Property(a => a.UriPartido)
-                .HasColumnType("varchar(300)");
+                .HasColumnType("varchar(300)")
+                .IsRequired(false);
 
             builder
                 .Property(a => a.UrlFoto)
-                .HasColumnType("varchar(300)");
+                .HasColumnType("varchar(300)")
+                .IsRequired(false);
         }
     }
 }

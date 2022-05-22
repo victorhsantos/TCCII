@@ -3,26 +3,25 @@ using TCCII.Deputados.Core.Entities;
 using TCCII.Deputados.Core.Entities.Identity;
 using TCCII.Deputados.Core.Interfaces;
 using TCCII.Deputados.Core.Interfaces.Repositories;
+using TCCII.Deputados.Core.Interfaces.Repositories.Base;
 
 namespace TCCII.Deputados.Core.Services
 {
     public class UserServices : IUserServices
     {
+        private readonly IUnitOfWork _uow;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
-        private readonly IUserDeputadosRepository _userDeputadosRepository;
-        private readonly IDeputadosRepository _deputadosRepository;
+
 
         public UserServices(
+            IUnitOfWork uow,
             UserManager<User> userManager,
-            SignInManager<User> signInManager,
-            IUserDeputadosRepository userDeputadosRepository,
-            IDeputadosRepository deputadosRepository)
+            SignInManager<User> signInManager)
         {
             _userManager = userManager;
-            _signInManager = signInManager;
-            _userDeputadosRepository = userDeputadosRepository;
-            _deputadosRepository = deputadosRepository;
+            _signInManager = signInManager;            
+            _uow = uow;
         }
 
         public async Task<IdentityResult> CreateUser(User user, string password) =>
@@ -99,10 +98,10 @@ namespace TCCII.Deputados.Core.Services
 
         public List<Deputado> GetFollowDeputados(User user)
         {
-            var userDeputados = _userDeputadosRepository.QueryableFor(x => x.UserId == user.Id).ToList();
+            var userDeputados = _uow.UserDeputadosRepository.QueryableFor(x => x.UserId == user.Id).ToList();
             var listDeputados = new List<Deputado>();
             foreach (var deputado in userDeputados)
-                listDeputados.Add(_deputadosRepository.FindById(deputado.DeputadosId));
+                listDeputados.Add(_uow.DeputadosRepository.FindById(deputado.DeputadosId));
             return listDeputados;
         }
     }
