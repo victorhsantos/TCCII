@@ -7,6 +7,7 @@ namespace TCCII.Deputados.API.Intefaces
     public interface IDespesasServices
     {
         Task<CustomResponse<MessageResponse>> AddDespesas(CreateDespesasRequest request);
-        Task<CustomResponse<NewsDespesasResponse>> GetNewsDespesas(int idDeputado);
+        Task<CustomResponse<NewsDespesasResponse>> GetNewsDespesas(int idDeputado);        
+        Task<CustomResponse<List<DespesaResponse>>> GetDespesas(int idDeputado);
     }
 }

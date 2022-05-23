@@ -32,7 +32,20 @@ namespace TCCII.Deputados.API.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("news/{idDeputado}")]        
+        [HttpGet("{idDeputado}")]
+        [SwaggerOperation(Summary = "Retorna atualizacoes nas despesas do deputado.")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CustomResponse<List<DespesaResponse>>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(CustomResponse<object>))]
+        public async Task<IActionResult> Despesas(int idDeputado)
+        {
+            if (!ModelState.IsValid) return BadRequest(CustomResponse<ErrorResponse>.FromErrorModelState(ModelState));
+
+            var result = await _despesasServices.GetDespesas(idDeputado);
+            if (result.Success) return Ok(result);
+            return BadRequest(result);
+        }
+
+        [HttpGet("news/{idDeputado}")]
         [SwaggerOperation(Summary = "Retorna atualizacoes nas despesas do deputado.")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CustomResponse<NewsDespesasResponse>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(CustomResponse<object>))]

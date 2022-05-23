@@ -50,10 +50,10 @@ namespace TCCII.Deputados.API.Services
             var deputado = _uow.DeputadosRepository.QueryableFor(d => d.IdDeputado == idDeputado).FirstOrDefault();
             if (deputado == null) return CustomResponse<NewsDespesasResponse>.FromBadRequest(ErrorResponse.BadRequest(MessageInstanceFailed.DeputadoNotFound));
 
-            var despesas = _uow.DespesasRepository.QueryableFor(x => x.IdDeputado == deputado.IdDeputado).Where(n => n.notificada == 0).ToList();            
+            var despesas = _uow.DespesasRepository.QueryableFor(x => x.IdDeputado == deputado.IdDeputado).Where(n => n.notificada == 0).ToList();
             if (despesas == null) return CustomResponse<NewsDespesasResponse>.FromSuccess(new NewsDespesasResponse());
-            
-            
+
+
             var despesasResponse = new NewsDespesasResponse();
             foreach (var despesa in despesas)
             {
@@ -64,6 +64,21 @@ namespace TCCII.Deputados.API.Services
             _uow.Commit();
 
             return CustomResponse<NewsDespesasResponse>.FromSuccess(despesasResponse);
+        }
+
+        public async Task<CustomResponse<List<DespesaResponse>>> GetDespesas(int idDeputado)
+        {
+            var deputado = _uow.DeputadosRepository.QueryableFor(d => d.IdDeputado == idDeputado).FirstOrDefault();
+            if (deputado == null) return CustomResponse<List<DespesaResponse>>.FromBadRequest(ErrorResponse.BadRequest(MessageInstanceFailed.DeputadoNotFound));
+
+            var despesas = _uow.DespesasRepository.QueryableFor(x => x.IdDeputado == deputado.IdDeputado).ToList();
+            if (despesas == null) return CustomResponse<List<DespesaResponse>>.FromSuccess(new List<DespesaResponse>());
+
+            var despesasResponse = new List<DespesaResponse>();
+            foreach (var despesa in despesas)
+                despesasResponse.Add(_mapper.Map<DespesaResponse>(despesa));
+
+            return CustomResponse<List<DespesaResponse>>.FromSuccess(despesasResponse);
         }
     }
 }
