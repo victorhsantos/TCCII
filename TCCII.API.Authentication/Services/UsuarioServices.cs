@@ -4,22 +4,27 @@ using TCCII.Deputados.API.DTOs.ResponseModels.Common;
 using TCCII.Deputados.API.Intefaces;
 using TCCII.Deputados.API.Messagens;
 using TCCII.Deputados.Core.Interfaces;
-using TCCII.Deputados.Core.Interfaces.Repositories;
 using TCCII.Deputados.Core.Interfaces.Repositories.Base;
+using TCCII.Deputados.API.DTOs.ResponseModels.Deputados;
+using AutoMapper;
 
 namespace TCCII.Deputados.API.Services
 {
     public class UsuarioServices : IUsuarioServices
     {
-
-        private readonly IUserServices _userServices;
+        private readonly IMapper _mapper;
         private readonly IUnitOfWork _uow;
+        private readonly IUserServices _userServices;
 
 
-        public UsuarioServices(IUserServices userServices, IUnitOfWork uow)
-        {            
+        public UsuarioServices(
+            IUserServices userServices, 
+            IUnitOfWork uow, 
+            IMapper mapper)
+        {
             _userServices = userServices;
             _uow = uow;
+            _mapper = mapper;
         }
 
         public async Task<CustomResponse<MessageResponse>> FollowDeputado(FollowDeputadoRequest request)
@@ -36,6 +41,15 @@ namespace TCCII.Deputados.API.Services
             _uow.Commit();
             return CustomResponse<MessageResponse>.FromSuccess(MessageResponse.Success(MessageInstanceSuccess.SuccessFollowDeputado));
 
+        }
+
+        public async Task<CustomResponse<List<DeputadosResponse>>> GetDeputadoFollowing(string userName)
+        {
+            var user = await _userServices.GetUserByUserName(userName);
+            if (user == null) return CustomResponse<List<DeputadosResponse>>.FromBadRequest(ErrorResponse.BadRequest(MessageInstanceFailed.UserNotFound));
+
+            var deputadoFollowing = _mapper.Map<List<DeputadosResponse>>(_userServices.GetFollowDeputados(user));
+            return CustomResponse<List<DeputadosResponse>>.FromSuccess(deputadoFollowing);
         }
 
         public async Task<CustomResponse<MessageResponse>> UnfollowDeputado(UnfollowDeputadoRequest request)

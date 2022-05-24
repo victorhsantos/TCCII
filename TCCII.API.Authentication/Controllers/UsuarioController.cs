@@ -2,6 +2,7 @@
 using Swashbuckle.AspNetCore.Annotations;
 using TCCII.Deputados.API.DTOs.RequestModels.Usuarios;
 using TCCII.Deputados.API.DTOs.ResponseModels.Common;
+using TCCII.Deputados.API.DTOs.ResponseModels.Deputados;
 using TCCII.Deputados.API.Intefaces;
 
 namespace TCCII.Deputados.API.Controllers
@@ -32,7 +33,7 @@ namespace TCCII.Deputados.API.Controllers
             return BadRequest(result);
 
         }
-
+        
         [HttpPost]
         [Route("deputado/unfollow")]
         [SwaggerOperation(Summary = "Deixar de seguir Deputado")]
@@ -43,6 +44,21 @@ namespace TCCII.Deputados.API.Controllers
             if (!ModelState.IsValid) return BadRequest(CustomResponse<ErrorResponse>.FromErrorModelState(ModelState));
 
             var result = await _usuarioServices.UnfollowDeputado(request);
+            if (result.Success) return Ok(result);
+            return BadRequest(result);
+
+        }
+
+        [HttpGet]
+        [Route("deputado/following")]
+        [SwaggerOperation(Summary = "Retorna deputados seguidos")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CustomResponse<List<DeputadosResponse>>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(CustomResponse<object>))]
+        public async Task<IActionResult> DeputadoFollowing([FromQuery, SwaggerParameter(Required = true)] string userName)
+        {
+            if (!ModelState.IsValid) return BadRequest(CustomResponse<ErrorResponse>.FromErrorModelState(ModelState));
+
+            var result = await _usuarioServices.GetDeputadoFollowing(userName);
             if (result.Success) return Ok(result);
             return BadRequest(result);
 
